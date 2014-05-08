@@ -8,4 +8,8 @@ setup(name='SparkJobManager',
             license='MIT',
             description='Package for call spark job server api',
             long_description=readme,
-            packages=find_packages())
+            packages=find_packages(),
+            install_requires=[
+                'requests'
+            ]
+     )
