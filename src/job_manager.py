@@ -32,9 +32,3 @@ def start_job(app_name, class_path, context, data):
     r = requests.post(job_url, params=params, data=data)
     print r.text
     return json.loads(r.text)
-
-def main():
-    list_jobs()
-
-if __name__ == '__main__':
-    main()

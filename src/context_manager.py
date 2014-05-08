@@ -1,3 +1,4 @@
+import json
 import requests
 import settings
 
@@ -16,19 +17,7 @@ def start_context(name, cpu=4, mem="512m"):
     }
     r = requests.post(context_url + "/" + name, params=params)
     print r.text
-    return json.loads(r.text)
 
 def stop_context(name):
     r = requests.delete(context_url + "/" + name)
     print r.text
-    return json.loads(r.text)
-
-
-
-def main():
-    start_context("cassandra-test", mem="2571m")
-    #stop_context("cassandra-test")
-    list_contexts()
-
-if __name__ == '__main__':
-    main()
