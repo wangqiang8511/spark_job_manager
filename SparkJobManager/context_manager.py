@@ -4,7 +4,7 @@ import settings
 
 
 def get_context_url(host):
-    return host + "/contexts"
+    return host + "contexts"
 
 def list_contexts(host=settings.JOB_SERVER_URI):
     r = requests.get(get_context_url(host))

@@ -4,7 +4,7 @@ import settings
 
 
 def get_jar_url(host):
-    return host + "/jars"
+    return host + "jars"
 
 def list_jars(host=settings.JOB_SERVER_URI):
     r = requests.get(get_jar_url(host))

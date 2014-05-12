@@ -4,7 +4,7 @@ import settings
 
 
 def get_job_url(host):
-    return host + "/jobs"
+    return host + "jobs"
 
 def list_jobs(limit=10, host=settings.JOB_SERVER_URI):
     params = {
