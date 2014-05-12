@@ -3,14 +3,15 @@ import requests
 import settings
 
 
-jar_url = settings.JOB_SERVER_URI + "jars"
+def get_jar_url(host):
+    return host + "/jars"
 
-def list_jars():
-    r = requests.get(jar_url)
+def list_jars(host=settings.JOB_SERVER_URI):
+    r = requests.get(get_jar_url(host))
     print r.text
     return json.loads(r.text)
 
-def post_jar(name, jar):
-    r = requests.post(jar_url + "/" + name, 
+def post_jar(name, jar, host=settings.JOB_SERVER_URI):
+    r = requests.post(get_jar_url(host) + "/" + name, 
                       data=file(jar, 'rb').read())
     print r.text

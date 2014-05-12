@@ -3,32 +3,33 @@ import requests
 import settings
 
 
-job_url = settings.JOB_SERVER_URI + "jobs"
+def get_job_url(host):
+    return host + "/jobs"
 
-def list_jobs(limit=10):
+def list_jobs(limit=10, host=settings.JOB_SERVER_URI):
     params = {
         "limit" : limit 
     }
-    r = requests.get(job_url, params=params)
+    r = requests.get(get_job_url(host), params=params)
     print r.text
     return json.loads(r.text)
 
-def get_job_result(job_id):
-    r = requests.get(job_url + "/" + job_id)
+def get_job_result(job_id, host=settings.JOB_SERVER_URI):
+    r = requests.get(get_job_url(host) + "/" + job_id)
     print r.text
     return json.loads(r.text)
 
-def get_job_config(job_id):
-    r = requests.get(job_url + "/" + job_id + "/config")
+def get_job_config(job_id, host=settings.JOB_SERVER_URI):
+    r = requests.get(get_job_url(host) + "/" + job_id + "/config")
     print r.text
     return json.loads(r.text)
 
-def start_job(app_name, class_path, context, data):
+def start_job(app_name, class_path, context, data, host=settings.JOB_SERVER_URI):
     params = {
         "appName"  : app_name,
         "classPath" : class_path,
         "context" : context,
     }
-    r = requests.post(job_url, params=params, data=data)
+    r = requests.post(get_job_url(host), params=params, data=data)
     print r.text
     return json.loads(r.text)
